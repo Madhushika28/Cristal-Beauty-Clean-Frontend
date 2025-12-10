@@ -7,7 +7,8 @@ import { Loader } from "../../components/loader";
 export default function AdminOrdersPage() {
     const [orders, setOrders] = useState([]);
     const [isLoading, setIsLoading] = useState(true)
-    const [isModelOpen, setIsModalOpen] = useState(true);
+    const [isModelOpen, setIsModalOpen] = useState(false);
+    const [selectedOrder, setSelectedOrder] = useState(null);
 
     const navigate = useNavigate()
 
@@ -38,7 +39,10 @@ export default function AdminOrdersPage() {
         <div className="w-full min-h-full">
             {
                 isModelOpen && (
-                    <div className="fixed left-0 top-0 w-full h-screen bg-[] ">
+                    <div className="fixed left-0 top-0 w-full h-screen bg-blend-hard-light flex justify-center items-center ">
+                        <div className="w-[400px] h-[200px] bg-primary relative flex flex-col justify-center items-center gap-[40px] p-6">
+
+                        </div>
                     </div>
                 )
             }
@@ -97,10 +101,14 @@ export default function AdminOrdersPage() {
                                         <tr
                                             key={item.orderID}
                                             className="odd:bg-white even:bg-primary hover:bg-accent/5 transition-colors"
+                                            onClick={()=>{
+                                                setSelectedOrder(item);
+                                                setIsModalOpen(true);
+                                            }}
                                         >
                                             
                                             <td className="px-4 py-3 font-mono text-sm text-secondary/80">
-                                                {item.ordertID}
+                                                {item.orderID}
                                             </td>
                                             <td className="px-4 py-3 font-medium text-secondary">
                                                 {item.items.length} items
@@ -118,8 +126,9 @@ export default function AdminOrdersPage() {
                                                 {item.address}
                                             </td>
                                             <td className="px-4 py-3">
-                                                {'LKR ${item.total.toFixed(2)}'}
+                                                {`LKR ${item.total.toFixed(2)}`}
                                             </td>
+
                                             <td className="px-4 py-3 text-center">
                                                 {item.status}
                                             </td>
