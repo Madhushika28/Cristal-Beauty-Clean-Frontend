@@ -2,12 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "../../components/loader";
+import OrderModal from "../../components/orderInfoModel.jsx";
 
 
 export default function AdminOrdersPage() {
     const [orders, setOrders] = useState([]);
     const [isLoading, setIsLoading] = useState(true)
-    const [isModelOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedOrder, setSelectedOrder] = useState(null);
 
     const navigate = useNavigate()
@@ -37,15 +38,7 @@ export default function AdminOrdersPage() {
 
     return (
         <div className="w-full min-h-full">
-            {
-                isModelOpen && (
-                    <div className="fixed left-0 top-0 w-full h-screen bg-blend-hard-light flex justify-center items-center ">
-                        <div className="w-[400px] h-[200px] bg-primary relative flex flex-col justify-center items-center gap-[40px] p-6">
-
-                        </div>
-                    </div>
-                )
-            }
+            <OrderModal isModalOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} selectedOrder={selectedOrder} refresh={()=>{setIsLoading(true)}}/>
             
             {/* Page container */}
             <div className="mx-auto max-w-7xl p-6">
