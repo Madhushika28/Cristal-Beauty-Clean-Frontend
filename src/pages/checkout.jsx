@@ -13,7 +13,7 @@ export default function CheckoutPage() {
 	const [name, setName] = useState("");
 
 
-	const [cart, setCart] = useState(location.state);
+	const [cart, setCart] = useState(location.state || []);
 
 	function getTotal() {
 		let total = 0;
@@ -30,7 +30,6 @@ export default function CheckoutPage() {
 			navigate("/login");
 			return;
 		}
-		 
 		try{
 			const items = []
 
@@ -45,7 +44,7 @@ export default function CheckoutPage() {
 
 			await axios.post(import.meta.env.VITE_API_URL + "/api/orders",{
 				address : address,
-				//customerName : name==""?null:name,
+				customerName : name==""?null:name,
 				items: items
 			},{
 				headers: {
@@ -61,11 +60,10 @@ export default function CheckoutPage() {
 
 			//if error is 400
 			if(error.response && error.response.status == 400){
-
 						
 				toast.error(error.response.data.message)
 
-		}
+			}
 		}
 		
 	}
