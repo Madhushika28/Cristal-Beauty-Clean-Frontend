@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
 	const [email, setEmail] = useState("");
@@ -151,12 +151,12 @@ export default function LoginPage() {
 
 							<div className="mt-6 text-center text-sm text-primary/90">
 								New to CBC?{" "}
-								<a
-									href="#"
+								<Link
+									to="/register"
 									className="text-accent hover:underline underline-offset-4"
 								>
 									Create your account
-								</a>
+								</Link>
 							</div>
 						</div>
 

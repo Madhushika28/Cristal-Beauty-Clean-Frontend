@@ -3,6 +3,7 @@ import { BsCart3 } from "react-icons/bs";
 import { MdMenu } from "react-icons/md";
 import { Link } from "react-router-dom";
 import UserData from "./userData";
+import UserDataMobile from "./userDataMobile";
 
 export default function Header() {
 
@@ -51,7 +52,7 @@ export default function Header() {
 								Cart
 							</a>
 							<div className=" lg:hidden flex w-[300px] absolute bottom-[20px] left-0  justify-center items-center gap-4">
-								{/*<UserDataMobile />*/}
+								<UserDataMobile />
 							</div>
 						</div>
 					</div>
