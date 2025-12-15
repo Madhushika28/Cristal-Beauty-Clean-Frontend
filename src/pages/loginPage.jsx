@@ -1,3 +1,4 @@
+import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -7,6 +8,24 @@ export default function LoginPage() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
     const navigate = useNavigate()
+	const googleLogin = useGoogleLogin({
+  			onSuccess: (response) => {
+				axios.post(import.meta.env.VITE_API_URL + "/api/users/google-login", {
+					token : response.access_token
+				}).then((res) => {
+					localStorage.setItem("token",res.data.token)
+					const user = res.data.user;
+					if(user.role == "admin"){
+						navigate("/admin");
+					} else {
+						navigate("/");
+					}
+				}).catch((err) => {
+					console.error("Google login failed:",err);
+					toast.error("Google login failed. Please try again.");
+				});
+  			}
+	});
 
 	async function login() {
 		try {
@@ -138,6 +157,12 @@ export default function LoginPage() {
 									className="w-full h-11 rounded-xl bg-accent text-white font-semibold shadow-lg shadow-accent/20 hover:brightness-110 active:scale-[0.99] transition"
 								>
 									Login
+								</button>
+								<button
+									onClick={googleLogin}
+									className="w-full h-11 rounded-xl bg-accent text-white font-semibold shadow-lg shadow-accent/20 hover:brightness-110 active:scale-[0.99] transition"
+								>
+									Google Login
 								</button>
 							</div>
 
