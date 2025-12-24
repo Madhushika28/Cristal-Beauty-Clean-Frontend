@@ -36,7 +36,7 @@ function UserBlockConfirm(props){
                     X
                 </button>
                 <p className="text-xl font-semibold text-center">
-                    Are you sure you want to (props.user.isBlock ? "unblock" : "block") the user with email : {email}?</p>
+                    Are you sure you want to {props.user.isBlock ? "unblock" : "block"} the user with email : {email}?</p>
                 <div className="flex gap-[40px]">
                     <button onClick={close} className="w-[100px] bg-blue-600 p-[5px] text-white hover:bg-accent">
                         Cancel
