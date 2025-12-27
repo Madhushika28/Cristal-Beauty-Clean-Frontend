@@ -104,7 +104,7 @@ export default function AdminOrdersPage() {
                                                 {item.orderID}
                                             </td>
                                             <td className="px-4 py-3 font-medium text-secondary">
-                                                {item.items.length} items
+                                                {item.items.reduce((sum, i) => sum + i.quantity, 0)} items
                                             </td>
                                             <td className="px-4 py-3 font-medium text-secondary">
                                                 {item.customerName}
