@@ -9,22 +9,22 @@ export default function LoginPage() {
 	const [password, setPassword] = useState("");
     const navigate = useNavigate()
 	const googleLogin = useGoogleLogin({
-  			onSuccess: (response) => {
-				axios.post(import.meta.env.VITE_API_URL + "/api/users/google-login", {
+			onSuccess: (response)=>{
+				axios.post(import.meta.env.VITE_API_URL + "/api/users/google-login",{
 					token : response.access_token
-				}).then((res) => {
+				}).then((res)=>{
 					localStorage.setItem("token",res.data.token)
 					const user = res.data.user;
 					if(user.role == "admin"){
 						navigate("/admin");
-					} else {
+					}else{
 						navigate("/");
 					}
-				}).catch((err) => {
-					console.error("Google login failed:",err);
+				}).catch((err)=>{
+					console.error("Google login failed:", err);
 					toast.error("Google login failed. Please try again.");
 				});
-  			}
+			}
 	});
 
 	async function login() {
@@ -47,6 +47,7 @@ export default function LoginPage() {
             toast.error("Login failed. Please check your credentials.");
 		}
 	}
+
 
 	return (
 		<div className="min-h-screen w-full relative flex items-stretch">

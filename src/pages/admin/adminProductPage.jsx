@@ -34,7 +34,7 @@ function ProductDeleteConfirm(props){
 				<button onClick={close} className="absolute right-[-42px] top-[-42px] w-[40px] h-[40px] bg-red-600 rounded-full text-white flex justify-center items-center font-bold border border-red-600 hover:bg-white hover:text-red-600">
 					X
 				</button>
-				<p className="text-xl font-semibold">Are you sure you want to delete the product with product ID : {productID}?</p>
+				<p className="text-xl font-semibold text-center">Are you sure you want to delete the product with product ID : {productID}?</p>
 				<div className="flex gap-[40px]">
 					<button onClick={close} className="w-[100px] bg-blue-600 p-[5px] text-white hover:bg-accent">
 						Cancel

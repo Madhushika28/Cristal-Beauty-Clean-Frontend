@@ -1,5 +1,5 @@
 import { CiCircleChevDown, CiCircleChevUp } from "react-icons/ci";
-import { addToCart, getTotal, loadCart } from "../utils/cart";
+import { addToCart, getTotal, loadCart } from "../utils/cart.js";
 import { BiTrash } from "react-icons/bi";
 import {  useState } from "react";
 import { Link } from "react-router-dom";
@@ -52,7 +52,7 @@ export default function CartPage() {
                  <div  className="w-full lg:w-full h-[120px] bg-white flex flex-col-reverse  lg:flex-row justify-end items-center relative">
                     <Link state={cart} to="/checkout" className="lg:absolute left-0 bg-accent text-white px-6 py-3  lg:ml-[20px] hover:bg-accent/80">Proceed to Checkout</Link>
                     <div className="h-[50px]">
-                        <span className="font-semibold text-accent lg:w-full text-center lg:text-right text-2xl p-0 lg:pr-[10px] mt-[5px]">Total: LKR {getTotal().toFixed(2)}</span>
+                        <span className="font-semibold text-accent lg:w-full text-center   lg:text-right text-2xl p-0 lg:pr-[10px] mt-[5px]">Total: LKR {getTotal().toFixed(2)}</span>
                     </div>
                  </div>
 			</div>
