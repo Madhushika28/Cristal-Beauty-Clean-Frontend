@@ -13,7 +13,7 @@ export default function CheckoutPage() {
 	const [name, setName] = useState("");
 
 
-	const [cart, setCart] = useState(location.state || []);
+	const [cart, setCart] = useState(location.state);
 
 	function getTotal() {
 		let total = 0;
@@ -31,16 +31,10 @@ export default function CheckoutPage() {
 			return;
 		}
 		try{
-			const items = []
-
-			for(let i=0; i<cart.length; i++){
-				items.push(
-					{
-						productID : cart[i].productID,
-						quantity : cart[i].quantity
-					}
-				)
-			}
+			const items = cart.map(item => ({
+				productID: item.productID,
+				quantity: Number(item.quantity)   // ensure it is a number
+			}));
 
 			await axios.post(import.meta.env.VITE_API_URL + "/api/orders",{
 				address : address,
@@ -53,6 +47,10 @@ export default function CheckoutPage() {
 			})
 
 		toast.success("Order placed successfully");
+
+		setCart([]);
+        localStorage.setItem("cart", "[]");
+
 			
 		}catch(error){
 			toast.error("Failed to place order");
@@ -105,6 +103,7 @@ export default function CheckoutPage() {
 										newCart[index].quantity += 1;
 
 										setCart(newCart);
+										localStorage.setItem("cart", JSON.stringify(newCart));
 									}}
 								/>
 								<span className="font-semibold text-4xl">{item.quantity}</span>
@@ -118,6 +117,7 @@ export default function CheckoutPage() {
 										}
 
 										setCart(newCart);
+										localStorage.setItem("cart", JSON.stringify(newCart));
 									}}
 								/>
 							</div>
