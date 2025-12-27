@@ -34,27 +34,38 @@ export default function UserSettings() {
 
 	// No-ops per your spec (wire your API calls here)
 	async function updateUserData() {
-        const data = {
-            firstName: firstName,
-            lastName: lastName,
-            image : user.image
-        }
-        if(image !=null){
-            const link = await mediaUpload(image);
-            image.profilePicture = link;
-        }
+  try {
+    let imageUrl = user?.image; // keep old image
 
-        await axios.put(import.meta.env.VITE_API_URL + "/api/users/me", data,{
-            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        }).then(()=>{
-            alert("Profile updated successfully");
-        }).catch((err)=>{
-            console.error("Error updating profile:", err);
-            alert("Failed to update profile");
-        })
-        navigate("/")
+    // upload new image if selected
+    if (image) {
+      imageUrl = await mediaUpload(image);
+    }
 
+    const data = {
+      firstName,
+      lastName,
+      image: imageUrl, 
     };
+
+    await axios.put(
+      import.meta.env.VITE_API_URL + "/api/users/me",
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+
+    toast.success("Profile updated successfully");
+    navigate("/");
+  } catch (err) {
+    console.error(err);
+    toast.error("Failed to update profile");
+  }
+}
+
 	async function updatePassword() {
         if (password !== confirmPassword) {
             toast.error("Passwords do not match");
@@ -75,10 +86,12 @@ export default function UserSettings() {
         navigate("/")
     };
 
-	const imagePreview = useMemo(
-		() => (image ? URL.createObjectURL(image) : ""),
-		[image]
-	);
+	const imagePreview = useMemo(() => {
+  if (image) return URL.createObjectURL(image);
+  if (user?.image) return user.image;
+  return "";
+}, [image, user]);
+
 	const pwdMismatch =
 		password && confirmPassword && password !== confirmPassword;
 
