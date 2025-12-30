@@ -4,13 +4,14 @@ import toast from "react-hot-toast";
 import { Loader } from "../components/loader";
 import ProductCard from "../components/productCard";
 
+
 export function ProductPage() {
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         if(isLoading){
-            axios.get(import.meta.env.VITE_API_URL + "/api/products").then(
+            axios.get(import.meta.env.VITE_API_URL + "/api/Products").then(
                 (response) => {
                     setProducts(response.data);
                     setIsLoading(false);

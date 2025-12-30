@@ -1,5 +1,5 @@
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
-import { FaChartLine } from "react-icons/fa";
+import { FaChartLine, FaComments } from "react-icons/fa";
 import { MdOutlineMessage, MdShoppingCartCheckout } from "react-icons/md";
 import { BsBox2Heart } from "react-icons/bs";
 import { HiOutlineUsers } from "react-icons/hi";
@@ -14,6 +14,7 @@ import { Loader } from "../components/loader";
 import AdminUsersPage from "./admin/usersPage";
 import AdminContactPage from "./admin/adminContactPage";
 import DashboardHome from "./admin/adminDashboard";
+import AdminFeedbackPage from "./admin/adminFeedbackPage";
 
 export default function AdminPage() {
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ export default function AdminPage() {
     { label: "Products", icon: <BsBox2Heart />, path: "/admin/products" },
     { label: "Contact Messages", icon: <MdOutlineMessage />, path: "/admin/contact" },
     { label: "Users", icon: <HiOutlineUsers />, path: "/admin/users" },
+    { label: "Feedback", icon: <FaComments />, path: "/admin/feedback" },
   ];
 
   return (
@@ -83,6 +85,7 @@ export default function AdminPage() {
               <Route path="/update-product" element={<UpdateProductPage />} />
               <Route path="/users" element={<AdminUsersPage />} />
               <Route path="/contact" element={<AdminContactPage />} />
+              <Route path="/feedback" element={<AdminFeedbackPage />} />
             </Routes>
           ) : <Loader />}
         </div>
