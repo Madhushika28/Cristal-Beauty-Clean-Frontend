@@ -27,7 +27,7 @@ export default function AddProductPage() {
 		for (let i = 0; i < images.length; i++) {
 			promises[i] = mediaUpload(images[i]);
 		}
-		//
+		
 		try {
 			const urls = await Promise.all(promises);
 			const alternativeNames = altNames.split(",")
@@ -61,7 +61,7 @@ export default function AddProductPage() {
 	return (
 		<div className="min-h-screen w-full bg-primary/70 flex items-center justify-center p-6">
 			<div className="w-full max-w-3xl rounded-2xl border border-accent/30 bg-white shadow-xl">
-				{/* Header */}
+				
 				<div className="flex items-center justify-between gap-3 border-b border-accent/20 px-6 py-5">
 					<div>
 						<h1 className="text-xl font-semibold text-secondary">
@@ -74,10 +74,10 @@ export default function AddProductPage() {
 					<div className="h-10 w-10 rounded-full bg-accent/15 ring-1 ring-accent/30" />
 				</div>
 
-				{/* Form grid */}
+				
 				<div className="px-6 py-6">
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-						{/* Product ID */}
+						
 						<label className="flex flex-col gap-1.5">
 							<span className="text-sm font-medium text-secondary">
 								Product ID
@@ -92,7 +92,7 @@ export default function AddProductPage() {
 							/>
 						</label>
 
-						{/* Name */}
+						
 						<label className="flex flex-col gap-1.5">
 							<span className="text-sm font-medium text-secondary">Name</span>
 							<input
@@ -105,7 +105,7 @@ export default function AddProductPage() {
 							/>
 						</label>
 
-						{/* Alt Names */}
+						
 						<label className="flex flex-col gap-1.5 md:col-span-2">
 							<span className="text-sm font-medium text-secondary">
 								Alternative Names
@@ -120,7 +120,7 @@ export default function AddProductPage() {
 							/>
 						</label>
 
-						{/* Description */}
+						
 						<label className="flex flex-col gap-1.5 md:col-span-2">
 							<span className="text-sm font-medium text-secondary">
 								Description
@@ -135,7 +135,7 @@ export default function AddProductPage() {
 							/>
 						</label>
 
-						{/* Images */}
+						
 						<label className="flex flex-col gap-1.5 md:col-span-2">
 							<span className="text-sm font-medium text-secondary">Images</span>
 							<input
@@ -151,7 +151,6 @@ export default function AddProductPage() {
 							</span>
 						</label>
 
-						{/* Price */}
 						<label className="flex flex-col gap-1.5">
 							<span className="text-sm font-medium text-secondary">Price</span>
 							<input

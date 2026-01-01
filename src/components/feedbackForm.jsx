@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"; // Added useEffect
+import { useState, useEffect } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import RatingStars from "./ratingStars";
@@ -8,7 +8,7 @@ export default function FeedbackForm({ productID, userFeedback = null, onSuccess
     const [review, setReview] = useState(userFeedback?.review || "");
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    // Sync props with state when userFeedback changes
+    
     useEffect(() => {
         setRating(userFeedback?.rating || 0);
         setReview(userFeedback?.review || "");
@@ -54,7 +54,7 @@ export default function FeedbackForm({ productID, userFeedback = null, onSuccess
 
             toast.success(response.data.message);
 
-            // Only reset if it's a new feedback submission, not an update
+        
             if (!userFeedback) {
                 setReview("");
                 setRating(0);

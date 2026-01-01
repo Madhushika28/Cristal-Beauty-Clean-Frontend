@@ -24,7 +24,6 @@ export default function UserData() {
       .finally(() => setLoading(false));
   }, []);
 
-  // Click-outside to close menu
   useEffect(() => {
     function onDocClick(e) {
       if (!menuOpen) return;
@@ -50,7 +49,9 @@ export default function UserData() {
 
   const initials =
     user?.firstName || user?.lastName
-      ? `${(user?.firstName ?? "")[0] ?? ""}${(user?.lastName ?? "")[0] ?? ""}`.toUpperCase()
+      ? `${(user?.firstName ?? "")[0] ?? ""}${
+          (user?.lastName ?? "")[0] ?? ""
+        }`.toUpperCase()
       : "U";
 
   const handleLogout = () => {
@@ -62,7 +63,6 @@ export default function UserData() {
 
   return (
     <div className="w-full flex items-center justify-center">
-      {/* Loading state */}
       {loading && (
         <div
           className="h-9 w-9 rounded-full border-2 border-primary border-b-transparent animate-spin"
@@ -71,7 +71,6 @@ export default function UserData() {
         />
       )}
 
-      {/* Logged-out CTA */}
       {!loading && !user && (
         <a
           href="/login"
@@ -81,11 +80,9 @@ export default function UserData() {
         </a>
       )}
 
-      {/* Logged-in menu */}
       {user && (
         <div className="relative flex items-center gap-3">
           <div className="flex items-center gap-3 rounded-full bg-primary/80 px-3 py-1.5 shadow-sm ring-1 ring-secondary/10">
-            {/* Avatar */}
             {user.image ? (
               <img
                 src={user.image}
@@ -98,17 +95,17 @@ export default function UserData() {
               </div>
             )}
 
-            {/* Name + role (optional) */}
             <div className="hidden sm:flex flex-col leading-tight">
               <span className="text-sm font-semibold text-secondary">
                 {user.firstName ?? "User"}
               </span>
               {user.role && (
-                <span className="text-[11px] text-secondary/70">{user.role}</span>
+                <span className="text-[11px] text-secondary/70">
+                  {user.role}
+                </span>
               )}
             </div>
 
-            {/* Menu button */}
             <button
               ref={btnRef}
               type="button"
@@ -120,9 +117,11 @@ export default function UserData() {
                 if (e.key === "ArrowDown") {
                   e.preventDefault();
                   setMenuOpen(true);
-                  // focus first item after opening (next tick)
+
                   setTimeout(() => {
-                    const first = menuRef.current?.querySelector("button[data-menu-item]");
+                    const first = menuRef.current?.querySelector(
+                      "button[data-menu-item]"
+                    );
                     first?.focus();
                   }, 0);
                 }
@@ -140,7 +139,6 @@ export default function UserData() {
             </button>
           </div>
 
-          {/* Dropdown */}
           {menuOpen && (
             <div
               ref={menuRef}
@@ -157,11 +155,7 @@ export default function UserData() {
                 label="Orders"
               />
               <div className="my-1 h-px bg-secondary/10" />
-              <MenuItem
-                destructive
-                onClick={handleLogout}
-                label="Logout"
-              />
+              <MenuItem destructive onClick={handleLogout} label="Logout" />
             </div>
           )}
         </div>
@@ -183,14 +177,16 @@ function MenuItem({ label, onClick, destructive = false }) {
       onKeyDown={(e) => {
         if (e.key === "ArrowDown") {
           e.preventDefault();
-          const next = e.currentTarget.parentElement?.querySelectorAll("[data-menu-item]");
+          const next =
+            e.currentTarget.parentElement?.querySelectorAll("[data-menu-item]");
           if (!next) return;
           const items = Array.from(next);
           const idx = items.indexOf(e.currentTarget);
           items[(idx + 1) % items.length]?.focus();
         } else if (e.key === "ArrowUp") {
           e.preventDefault();
-          const next = e.currentTarget.parentElement?.querySelectorAll("[data-menu-item]");
+          const next =
+            e.currentTarget.parentElement?.querySelectorAll("[data-menu-item]");
           if (!next) return;
           const items = Array.from(next);
           const idx = items.indexOf(e.currentTarget);

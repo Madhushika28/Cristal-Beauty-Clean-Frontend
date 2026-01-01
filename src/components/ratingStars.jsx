@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"; // Added useEffect
+import { useState, useEffect } from "react"; 
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
 export default function RatingStars({ 
@@ -12,7 +12,7 @@ export default function RatingStars({
     const [hoverRating, setHoverRating] = useState(0);
     const [tempRating, setTempRating] = useState(value);
 
-    // Sync value prop with state
+    
     useEffect(() => {
         setTempRating(value);
     }, [value]);
@@ -23,7 +23,7 @@ export default function RatingStars({
         const hasHalfStar = currentRating % 1 >= 0.5;
         const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
 
-        // Full stars
+       
         for (let i = 0; i < fullStars; i++) {
             stars.push(
                 <FaStar
@@ -35,7 +35,7 @@ export default function RatingStars({
             );
         }
 
-        // Half star
+        
         if (hasHalfStar) {
             stars.push(
                 <FaStarHalfAlt
@@ -47,7 +47,7 @@ export default function RatingStars({
             );
         }
 
-        // Empty stars
+        
         for (let i = 0; i < emptyStars; i++) {
             stars.push(
                 <FaRegStar
