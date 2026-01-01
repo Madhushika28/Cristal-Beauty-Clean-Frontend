@@ -6,7 +6,7 @@ export default function ImageSlider({ images, onImageChange }) {
 	const handleClick = (index) => {
 		setActiveImage(index);
 		if (onImageChange) {
-			onImageChange(index); // notify parent
+			onImageChange(index); 
 		}
 	};
 

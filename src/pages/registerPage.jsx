@@ -32,20 +32,20 @@ export default function RegisterPage() {
 
 		} catch (e) {
 			console.error("Login failed:", e);
-            //alert("Login failed. Please check your credentials.");
+           
             toast.error("Login failed. Please check your credentials.");
 		}
 	}
 
 	return (
 		<div className="min-h-screen w-full relative flex items-stretch">
-			{/* Background image + gradient overlay */}
+			
 			<div className="absolute inset-0">
 				<div className="h-full w-full bg-[url('/bg.jpg')] bg-cover bg-center" />
 				<div className="absolute inset-0 bg-gradient-to-br from-secondary/70 via-secondary/40 to-primary/70" />
 			</div>
 
-			{/* Layout */}
+		
 			<div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 w-full">
                 <div className="flex items-center justify-center p-6 sm:p-10">
 					<div className="w-full max-w-md">
@@ -169,13 +169,13 @@ export default function RegisterPage() {
 							</div>
 						</div>
 
-						{/* Small footer for mobile */}
+						
 						<p className="mt-6 text-center text-primary/80 text-xs lg:hidden">
 							© {new Date().getFullYear()} CBC – Crystal Beauty Clear
 						</p>
 					</div>
 				</div>
-				{/* Left side hero */}
+				
 				<div className="hidden lg:flex flex-col justify-between p-10">
 					<div className="flex items-center gap-4">
 						<img

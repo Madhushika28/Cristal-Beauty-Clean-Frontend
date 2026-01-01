@@ -9,10 +9,14 @@ import RegisterPage from "./pages/registerPage";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import ForgetPassword from "./pages/forget-password.jsx";
 import UserSettings from "./pages/settings.jsx";
-import { Link } from "react-router-dom"; // Add for 404 page
+import { Link } from "react-router-dom"; 
 import OrdersPage from "./pages/orders.jsx";
+import PaymentPage from "./components/paymentPage.jsx";
+import OrderConfirmation from "./pages/orderConfirmation.jsx";
+import ProcessPayment from "./pages/process-payment.jsx";
+import CheckoutPage from "./pages/checkout.jsx";
 
-// 404 Component
+
 const NotFound = () => (
     <div className="min-h-screen flex items-center justify-center bg-primary">
         <div className="text-center">
@@ -59,6 +63,11 @@ function App() {
                         <Route path="/test" element={<TestPage />} />
                         <Route path="/settings" element={<UserSettings />} />
                         <Route path="/orders" element={<OrdersPage/>} />
+                        <Route path="/payment/:orderID" element={<PaymentPage/>} />
+                        <Route path="/process-payment" element={<ProcessPayment />} />
+                        <Route path="/order-confirmation" element={<OrderConfirmation />} />
+                        <Route path="/checkout" element={<CheckoutPage />} />
+
                        
                         <Route path="*" element={<NotFound />} />
                     </Routes>

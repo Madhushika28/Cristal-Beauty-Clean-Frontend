@@ -21,7 +21,7 @@ export function addToCart(product, quantity){
     )
 
     if(existingItemIndex == -1){
-        // item not in cart
+        
 
         if(quantity<1){
             console.log("Quantity must be at least 1")

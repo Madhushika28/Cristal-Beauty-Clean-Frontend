@@ -99,7 +99,7 @@ export default function AdminUsersPage() {
                         </span>
                     </div>
 
-                    {/* Table wrapper for responsive scrolling */}
+                    
                     <div className="overflow-x-auto">
                         {isLoading?<Loader/>:
                         <table className="w-full min-w-[880px] text-left">
