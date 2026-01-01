@@ -9,7 +9,7 @@ export default function AdminContactPage() {
   useEffect(() => {
     async function fetchMessages() {
       try {
-        // Get token from localStorage (make sure admin login stores it)
+        // Get token from localStorage 
         const token = localStorage.getItem("token");
 
         const res = await axios.get(import.meta.env.VITE_API_URL + "/api/contact", {

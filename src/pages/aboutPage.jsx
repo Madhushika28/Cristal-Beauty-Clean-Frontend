@@ -92,7 +92,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* PRODUCTS FOCUS SECTION - Clean version without buttons */}
+      
       <div className="max-w-[1200px] mx-auto mb-32">
         <div className="text-center mb-16">
           <h2 className="text-[var(--color-secondary)] text-4xl font-bold mb-4">
@@ -136,7 +136,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* CTA SECTION - Keep only main shop button */}
+     
       <div className="max-w-[1200px] mx-auto text-center">
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[var(--color-secondary)]/10 to-[var(--color-accent)]/10 p-16 backdrop-blur-sm border border-white/20">
           <div className="absolute top-0 left-0 w-64 h-64 bg-[var(--color-accent)]/10 rounded-full -translate-x-32 -translate-y-32"></div>

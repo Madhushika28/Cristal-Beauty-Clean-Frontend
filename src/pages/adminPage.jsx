@@ -1,5 +1,5 @@
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
-import { FaChartLine, FaComments } from "react-icons/fa";
+import { FaChartLine, FaComments, FaMoneyBill, FaMoneyBillWave } from "react-icons/fa";
 import { MdOutlineMessage, MdShoppingCartCheckout } from "react-icons/md";
 import { BsBox2Heart } from "react-icons/bs";
 import { HiOutlineUsers } from "react-icons/hi";
@@ -15,6 +15,8 @@ import AdminUsersPage from "./admin/usersPage";
 import AdminContactPage from "./admin/adminContactPage";
 import DashboardHome from "./admin/adminDashboard";
 import AdminFeedbackPage from "./admin/adminFeedbackPage";
+import AdminPaymentsPage from "./admin/adminPaymentsPage";
+import AdminPendingPaymentsPage from "./admin/adminPendingPaymentsPage";
 
 export default function AdminPage() {
   const navigate = useNavigate();
@@ -50,6 +52,8 @@ export default function AdminPage() {
     { label: "Contact Messages", icon: <MdOutlineMessage />, path: "/admin/contact" },
     { label: "Users", icon: <HiOutlineUsers />, path: "/admin/users" },
     { label: "Feedback", icon: <FaComments />, path: "/admin/feedback" },
+    { label: "Payments", icon: <FaMoneyBill />, path: "/admin/payments" },
+     { label: "Pending Payments", icon: <FaMoneyBillWave />, path: "/admin/pending-payments" },
   ];
 
   return (
@@ -86,6 +90,9 @@ export default function AdminPage() {
               <Route path="/users" element={<AdminUsersPage />} />
               <Route path="/contact" element={<AdminContactPage />} />
               <Route path="/feedback" element={<AdminFeedbackPage />} />
+              <Route path="/payments" element={<AdminPaymentsPage/>} />
+              <Route path="/pending-payments" element={<AdminPendingPaymentsPage />} />
+              
             </Routes>
           ) : <Loader />}
         </div>
