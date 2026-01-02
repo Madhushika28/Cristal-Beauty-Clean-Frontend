@@ -228,7 +228,7 @@ export default function ContactUsPage() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                // In contactUs.jsx, update the mobile input field
+                
                 <div className="relative group/input">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--color-accent)]/30 to-transparent rounded-xl blur opacity-0 group-hover/input:opacity-50 transition duration-300"></div>
                   <div className="relative">
